@@ -2,7 +2,31 @@
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
-        "lib/**/*.jar"
+        "lib/**/*.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2GraphWindowLib\\lib\\CS2-GraphWindowAll.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2DataStructuresLib\\lib\\CS2-DataStructuresAll.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\acm.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\bsh.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\BTtracker.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\commons-codec-1.3.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\exception-doctor_1.0.6.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\gnu-regexp-1.1.0.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\javazoom.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\jdom.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\jgraph.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\jmf.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\mediacomp.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\rome-0.9.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\serializer.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\sound.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\student.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\tagsoup-1.2.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\utils.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\xalan.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\xercesImpl.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\xml-apis.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\xpp3_min-1.1.4c.jar",
+        "c:\\Users\\rootw\\Documents\\GitHub\\CS2114Project5\\CS2-Support\\xstream-1.3.1.jar"
     ],
     "java.dependency.packagePresentation": "hierarchical"
 }
