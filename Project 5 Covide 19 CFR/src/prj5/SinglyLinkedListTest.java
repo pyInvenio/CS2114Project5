@@ -1,5 +1,6 @@
 package prj5;
 
+import java.util.Comparator;
 import java.util.Iterator;
 
 public class SinglyLinkedListTest extends student.TestCase{
@@ -39,7 +40,7 @@ public class SinglyLinkedListTest extends student.TestCase{
         assertNotNull(out);
         out = null;
         try{
-            list.add(11, "Str0");
+            list.add(12, "Str0");
         }
         catch(IndexOutOfBoundsException e){
             out = e;
@@ -160,6 +161,32 @@ public class SinglyLinkedListTest extends student.TestCase{
             assertEquals("Str" + i, iter.next());
         }
         assertFalse(iter.hasNext());
+    }
+
+    public void testInsertionSort(){
+        SinglyLinkedList<String> list2 = new SinglyLinkedList<String>();
+        list2.add("J");
+        list2.add("I");
+        list2.add("H");
+        list2.add("G");
+        list2.add("F");
+        list2.add("E");
+        list2.add("D");
+        list2.add("C");
+        list2.add("B");
+        list2.add("A");
+        Comparator<String> c = Comparator.comparing(String::toString);
+        list2.insertionSort(c);
+        assertEquals("A", list2.get(0));
+        assertEquals("B", list2.get(1));
+        assertEquals("C", list2.get(2));
+        assertEquals("D", list2.get(3));
+        assertEquals("E", list2.get(4));
+        assertEquals("F", list2.get(5));
+        assertEquals("G", list2.get(6));
+        assertEquals("H", list2.get(7));
+        assertEquals("I", list2.get(8));
+        assertEquals("J", list2.get(9));
     }
 
 }

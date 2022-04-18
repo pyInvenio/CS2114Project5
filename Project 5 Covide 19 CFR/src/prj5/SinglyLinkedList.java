@@ -1,5 +1,6 @@
 package prj5;
 
+import java.util.Comparator;
 import java.util.Iterator;
 
 /**
@@ -118,7 +119,7 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
-        
+
         Node<E> current = head;
         Node<E> previous = null;
         if (index == 0) {
@@ -190,7 +191,6 @@ public class SinglyLinkedList<E> implements Iterable<E> {
     public void clear() {
         head = null;
         size = 0;
-        head.setNext(null);
     }
 
     /**
@@ -215,6 +215,46 @@ public class SinglyLinkedList<E> implements Iterable<E> {
      */
     public Iterator<E> iterator() {
         return new SinglyLinkedListIterator();
+    }
+
+    /**
+     * This method is to sort the list using insertion sort with a comparator
+     * 
+     * @param comparator the comparator to use for the sort
+     */
+    public void insertionSort(Comparator<E> comparator) {
+        Node<E> sorted = null;
+        Node<E> current = head;
+        while (current != null) {
+            Node<E> next = current.next;
+            sorted = sortedInsert(sorted, current, comparator);
+            current = next;
+        }
+        head = sorted;
+    }
+
+    /**
+     * This method is to insert a node into a sorted list for insertion sort
+     * 
+     * @param sortedHead the head of the sorted list
+     * @param current    the current node to be inserted
+     * @param comparator the comparator to compare the nodes
+     * @return the sorted head
+     */
+    private Node<E> sortedInsert(Node<E> sortedHead, Node<E> current, Comparator<E> comparator) {
+        if (sortedHead == null || comparator.compare(head.data, current.data) >= 0) {
+            current.setNext(sortedHead);
+            return current;
+        } else {
+            Node<E> temp = sortedHead;
+            while (temp.next != null && comparator.compare(temp.next.data, current.data) < 0) {
+                temp = temp.next;
+            }
+            current.setNext(temp.next);
+            temp.setNext(current);
+        }
+        
+        return sortedHead;
     }
 
     /**
@@ -308,7 +348,7 @@ public class SinglyLinkedList<E> implements Iterable<E> {
          */
         @Override
         public boolean hasNext() {
-            return next.getNext() != null;
+            return next != null;
         }
 
         /**
@@ -324,7 +364,7 @@ public class SinglyLinkedList<E> implements Iterable<E> {
             previous = next;
             next = next.getNext();
             calledNext = true;
-            return next.getData();
+            return previous.getData();
         }
 
         /**
