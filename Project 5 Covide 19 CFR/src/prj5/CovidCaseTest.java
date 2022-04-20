@@ -1,7 +1,7 @@
 /**
  * 
  */
-package proj5;
+package prj5;
 
 /**
  * @author ngocq

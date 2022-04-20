@@ -1,11 +1,11 @@
 /**
  * 
  */
-package proj5;
+package prj5;
 
 import java.io.FileNotFoundException;
 import java.text.ParseException;
-import proj5.InputManager;
+import prj5.InputManager;
 
 /**
  * @author ngocq

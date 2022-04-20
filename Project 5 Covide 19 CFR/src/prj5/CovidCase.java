@@ -1,4 +1,4 @@
-package proj5;
+package prj5;
 
 import java.text.DecimalFormat;
 
