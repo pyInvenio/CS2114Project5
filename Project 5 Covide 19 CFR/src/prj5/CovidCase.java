@@ -124,13 +124,7 @@ public class CovidCase {
         else if (this.cfr < other.cfr) {
             return -1;
         }
-        else if (this.getRace().compareTo(other.getRace()) < 0) {
-            return 1;
-        }
-        else if (this.getRace().compareTo(other.getRace()) > 0) {
-            return -1;
-        }
-        return 0;
+        return this.getRace().compareTo(other.getRace());
 
     }
 
