@@ -54,8 +54,8 @@ public class CovidCaseTest extends student.TestCase {
         assertEquals(calc1.compareTo(infoNa), 1);
         assertEquals(calc1.compareTo(higherCfr), -1);
         assertEquals(calc1.compareTo(same), 0);
-        assertEquals(calc1.compareTo(diffRace), 1);
-        assertEquals(diffRace.compareTo(calc1), -1);
+        assertEquals(calc1.compareTo(diffRace), -22);
+        assertEquals(diffRace.compareTo(calc1), 22);
     }
 
 
