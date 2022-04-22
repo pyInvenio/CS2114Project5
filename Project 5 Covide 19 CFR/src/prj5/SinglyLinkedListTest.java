@@ -2,47 +2,67 @@ package prj5;
 
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-public class SinglyLinkedListTest extends student.TestCase{
+/**
+ * This is the test class for SinglyLinkedList
+ * 
+ * @author ngocq, forrestm, robertpowell
+ * @version 4/22/2022
+ */
+public class SinglyLinkedListTest extends student.TestCase {
+    /**
+     * Fields
+     */
     private SinglyLinkedList<String> list;
 
-    public void setUp(){
+    /**
+     * Sets up before tests
+     */
+    public void setUp() {
         list = new SinglyLinkedList<String>();
         for (int i = 0; i < 10; i++) {
             list.add("Str" + i);
         }
     }
-    public void testSize(){
+
+
+    /**
+     * tests size()
+     */
+    public void testSize() {
         assertEquals(10, list.size());
     }
+
+
     /**
      * This method is test adding an object to the list at an index
      */
-    public void testAddIndex(){
+    public void testAddIndex() {
         list.add(0, "Str0");
         assertEquals(11, list.size());
         assertEquals("Str0", list.get(0));
         IllegalArgumentException illegal = null;
-        try{
+        try {
             list.add(0, null);
         }
-        catch(IllegalArgumentException e){
+        catch (IllegalArgumentException e) {
             illegal = e;
         }
         assertNotNull(illegal);
         IndexOutOfBoundsException out = null;
-        try{
+        try {
             list.add(-1, "Str0");
         }
-        catch(IndexOutOfBoundsException e){
+        catch (IndexOutOfBoundsException e) {
             out = e;
         }
         assertNotNull(out);
         out = null;
-        try{
+        try {
             list.add(12, "Str0");
         }
-        catch(IndexOutOfBoundsException e){
+        catch (IndexOutOfBoundsException e) {
             out = e;
         }
         assertNotNull(out);
@@ -51,45 +71,58 @@ public class SinglyLinkedListTest extends student.TestCase{
         assertEquals(12, list.size());
     }
 
-    public void testAdd(){
+
+    /**
+     * tests add()
+     */
+    public void testAdd() {
         list.add("Str0");
         assertEquals(11, list.size());
         assertEquals("Str0", list.get(10));
         IllegalArgumentException illegal = null;
-        try{
+        try {
             list.add(null);
         }
-        catch(IllegalArgumentException e){
+        catch (IllegalArgumentException e) {
             illegal = e;
         }
         assertNotNull(illegal);
     }
 
-    public void testRemoveIndex(){
+
+    /**
+     * tests remove at index
+     */
+    public void testRemoveIndex() {
         assertTrue(list.remove(0));
         assertEquals(9, list.size());
         assertEquals("Str1", list.get(0));
         IndexOutOfBoundsException out = null;
-        try{
+        try {
             list.remove(-1);
         }
-        catch(IndexOutOfBoundsException e){
+        catch (IndexOutOfBoundsException e) {
             out = e;
         }
         assertNotNull(out);
         out = null;
-        try{
+        try {
             list.remove(10);
         }
-        catch(IndexOutOfBoundsException e){
+        catch (IndexOutOfBoundsException e) {
             out = e;
         }
         assertNotNull(out);
         SinglyLinkedList<String> empty = new SinglyLinkedList<String>();
         assertFalse(empty.remove(0));
+        assertTrue(list.remove(5));
     }
 
-    public void testRemove(){
+
+    /**
+     * tests remove()
+     */
+    public void testRemove() {
         assertTrue(list.remove("Str0"));
         assertEquals(9, list.size());
         assertEquals("Str1", list.get(0));
@@ -97,40 +130,47 @@ public class SinglyLinkedListTest extends student.TestCase{
         SinglyLinkedList<String> empty = new SinglyLinkedList<String>();
         assertFalse(empty.remove("Str0"));
         IllegalArgumentException illegal = null;
-        try
-        {
+        try {
             list.remove(null);
         }
-        catch(IllegalArgumentException e)
-        {
+        catch (IllegalArgumentException e) {
             illegal = e;
         }
         assertNotNull(illegal);
+        assertTrue(list.remove("Str5"));
 
     }
 
-    public void testGet(){
+
+    /**
+     * tests get()
+     */
+    public void testGet() {
         assertEquals("Str0", list.get(0));
         assertEquals("Str9", list.get(9));
         IndexOutOfBoundsException out = null;
-        try{
+        try {
             list.get(-1);
         }
-        catch(IndexOutOfBoundsException e){
+        catch (IndexOutOfBoundsException e) {
             out = e;
         }
         assertNotNull(out);
         out = null;
-        try{
+        try {
             list.get(10);
         }
-        catch(IndexOutOfBoundsException e){
+        catch (IndexOutOfBoundsException e) {
             out = e;
         }
         assertNotNull(out);
     }
 
-    public void testContains(){
+
+    /**
+     * tests contains object
+     */
+    public void testContains() {
         assertTrue(list.contains("Str0"));
         assertTrue(list.contains("Str9"));
         assertFalse(list.contains("Str10"));
@@ -138,16 +178,31 @@ public class SinglyLinkedListTest extends student.TestCase{
         assertFalse(empty.contains("Str0"));
         assertFalse(list.contains(null));
     }
-    public void testIsEmpty(){
+
+
+    /**
+     * tests isEmpty()
+     */
+    public void testIsEmpty() {
         assertFalse(list.isEmpty());
         SinglyLinkedList<String> empty = new SinglyLinkedList<String>();
         assertTrue(empty.isEmpty());
     }
-    public void testClear(){
+
+
+    /**
+     * tests clear()
+     */
+    public void testClear() {
         list.clear();
         assertEquals(0, list.size());
     }
-    public void testToArray(){
+
+
+    /**
+     * tests toArray()
+     */
+    public void testToArray() {
         Object[] array = list.toArray();
         assertEquals(10, array.length);
         for (int i = 0; i < 10; i++) {
@@ -155,7 +210,11 @@ public class SinglyLinkedListTest extends student.TestCase{
         }
     }
 
-    public void testEquals(){
+
+    /**
+     * tests equals()
+     */
+    public void testEquals() {
         SinglyLinkedList<String> list2 = new SinglyLinkedList<String>();
         for (int i = 0; i < 10; i++) {
             list2.add("Str" + i);
@@ -163,24 +222,55 @@ public class SinglyLinkedListTest extends student.TestCase{
         assertTrue(list.equals(list2));
         SinglyLinkedList<String> list3 = new SinglyLinkedList<String>();
         for (int i = 0; i < 10; i++) {
-            list3.add("Str" + i);
+            list3.add("Str" + (i + 1));
         }
+
+        assertFalse(list.equals(list3));
         list3.add("Str10");
         assertFalse(list.equals(list3));
         assertFalse(list.equals(null));
         assertTrue(list.equals(list));
         assertFalse(list.equals("Str"));
     }
-    public void testIterator(){
+
+
+    /**
+     * tests iterator()
+     */
+    public void testIterator() {
         Iterator<String> iter = list.iterator();
         for (int i = 0; i < 10; i++) {
             assertTrue(iter.hasNext());
             assertEquals("Str" + i, iter.next());
         }
         assertFalse(iter.hasNext());
+        NoSuchElementException out = null;
+        try {
+            iter.next();
+        }
+        catch (NoSuchElementException e) {
+            out = e;
+        }
+        assertNotNull(out);
+        Iterator<String> iter2 = list.iterator();
+        IllegalStateException illegal = null;
+        try {
+            iter2.remove();
+        }
+        catch (IllegalStateException e) {
+            illegal = e;
+        }
+        assertNotNull(illegal);
+        iter2.next();
+        iter2.remove();
+        assertEquals(9, list.size());
     }
 
-    public void testInsertionSort(){
+
+    /**
+     * tests sorting
+     */
+    public void testInsertionSort() {
         SinglyLinkedList<String> list2 = new SinglyLinkedList<String>();
         list2.add("J");
         list2.add("I");

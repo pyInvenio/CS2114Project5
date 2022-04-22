@@ -66,12 +66,12 @@ latinx: 37223 cases, 4.3% CFR
 VA
 asian: 37276 cases, 10.7% CFR
 black: 17344 cases, 56.6% CFR
-latinx: 36689 cases, 25.0% CFR
+latinx: 36689 cases, 25% CFR
 other: 60088 cases, 1.2% CFR
 white: 85505 cases, 9.7% CFR
 =====
 black: 17344 cases, 56.6% CFR
-latinx: 36689 cases, 25.0% CFR
+latinx: 36689 cases, 25% CFR
 asian: 37276 cases, 10.7% CFR
 white: 85505 cases, 9.7% CFR
 other: 60088 cases, 1.2% CFR

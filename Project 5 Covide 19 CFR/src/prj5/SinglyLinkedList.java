@@ -7,9 +7,10 @@ import java.util.Iterator;
  * This class is to create a singly linked list with Node and Iterator nested
  * classes
  * 
- * @author Forrest Meng
- * @version 4/17/2022
- * @param <E> the type that is stored in the list
+ * @author ngocq, forrestm, robertpowell
+ * @version 4/22/2022 
+ * @param <E>
+ *            the type that is stored in the list
  */
 public class SinglyLinkedList<E> implements Iterable<E> {
 
@@ -19,6 +20,7 @@ public class SinglyLinkedList<E> implements Iterable<E> {
     private Node<E> head;
     private int size;
     private Node<E> sorted;
+
     /**
      * Creates a new LinkedList object
      */
@@ -27,6 +29,7 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         size = 0;
 
     }
+
 
     /**
      * This method is to get the size of the list
@@ -37,11 +40,14 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         return size;
     }
 
+
     /**
      * This method is to add an object to the list at an index
      * 
-     * @param index the index to add the object
-     * @param obj   the object to add
+     * @param index
+     *            the index to add the object
+     * @param obj
+     *            the object to add
      */
     public void add(int index, E obj) {
         if (index < 0 || index > size) {
@@ -54,10 +60,12 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         if (isEmpty()) {
             head = new Node<E>(obj);
             size++;
-        } else if (index == 0) {
+        }
+        else if (index == 0) {
             head = new Node<E>(obj, current);
             size++;
-        } else {
+        }
+        else {
             for (int i = 0; i < index - 1; i++) {
                 current = current.getNext();
             }
@@ -66,19 +74,23 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         }
     }
 
+
     /**
      * This method is to add an object to the list
      * 
-     * @param obj the object to add to the list
+     * @param obj
+     *            the object to add to the list
      */
     public void add(E obj) {
         add(size, obj);
     }
 
+
     /**
      * This method is to remove an object from a list
      * 
-     * @param obj the object to find and remove
+     * @param obj
+     *            the object to find and remove
      * @return true if the object is removed, false if not
      */
     public boolean remove(E obj) {
@@ -94,7 +106,8 @@ public class SinglyLinkedList<E> implements Iterable<E> {
             if (current.getData().equals(obj)) {
                 if (previous == null) {
                     head = current.getNext();
-                } else {
+                }
+                else {
                     previous.setNext(current.getNext());
                 }
                 size--;
@@ -106,10 +119,12 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         return false;
     }
 
+
     /**
      * This method is to remove an object at a certain index
      * 
-     * @param index the index to remove the object at
+     * @param index
+     *            the index to remove the object at
      * @return true if the removal is successful, false if not
      */
     public boolean remove(int index) {
@@ -124,7 +139,8 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         Node<E> previous = null;
         if (index == 0) {
             head = current.getNext();
-        } else {
+        }
+        else {
             for (int i = 0; i < index - 1; i++) {
                 previous = current;
                 current = current.getNext();
@@ -135,10 +151,12 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         return true;
     }
 
+
     /**
      * This method is to get the object at a certain index
      * 
-     * @param index the index to get the object at
+     * @param index
+     *            the index to get the object at
      * @return the data of the object at the index
      */
     public E get(int index) {
@@ -152,10 +170,12 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         return current.getData();
     }
 
+
     /**
      * This method is to check if the list has an object
      * 
-     * @param obj the object to look for
+     * @param obj
+     *            the object to look for
      * @return true if object was found, false if not
      */
 
@@ -176,6 +196,7 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         return false;
     }
 
+
     /**
      * This method is to check if the list is empty
      * 
@@ -185,6 +206,7 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         return head == null;
     }
 
+
     /**
      * Method is to clear the list
      */
@@ -192,6 +214,7 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         head = null;
         size = 0;
     }
+
 
     /**
      * This method is to turn the list to an array
@@ -208,6 +231,7 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         return array;
     }
 
+
     /**
      * This method is to get the iterator of the list
      * 
@@ -217,10 +241,12 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         return new SinglyLinkedListIterator();
     }
 
+
     /**
      * This method is to sort the list using insertion sort with a comparator
      * 
-     * @param comparator the comparator to use for the sort
+     * @param comparator
+     *            the comparator to use for the sort
      */
     public void insertionSort(Comparator<E> comparator) {
         sorted = null;
@@ -233,25 +259,30 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         head = sorted;
     }
 
+/**
+ * This method is to test check if an object is equal to this
+ * @param o the object to test
+ * @return true if they are equal or have same characteristics
+ */
     @Override
-    public boolean equals(Object o){
-        if(o == null){
+    public boolean equals(Object o) {
+        if (o == null) {
             return false;
         }
-        if(o == this){
+        if (o == this) {
             return true;
         }
-        if(!(o instanceof SinglyLinkedList)){
+        if (!(o instanceof SinglyLinkedList)) {
             return false;
         }
-        SinglyLinkedList<E> other = (SinglyLinkedList<E>) o;
-        if(other.size != size){
+        SinglyLinkedList<E> other = (SinglyLinkedList<E>)o;
+        if (other.size != size) {
             return false;
         }
         Node<E> current = head;
         Node<E> otherCurrent = other.head;
-        while(current != null){
-            if(!current.getData().equals(otherCurrent.getData())){
+        while (current != null) {
+            if (!current.getData().equals(otherCurrent.getData())) {
                 return false;
             }
             current = current.getNext();
@@ -260,21 +291,28 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         return true;
     }
 
+
     /**
      * This method is to insert a node into a sorted list for insertion sort
      * 
-     * @param sortedHead the head of the sorted list
-     * @param current    the current node to be inserted
-     * @param comparator the comparator to compare the nodes
+     * @param sortedHead
+     *            the head of the sorted list
+     * @param current
+     *            the current node to be inserted
+     * @param comparator
+     *            the comparator to compare the nodes
      * @return the sorted head
      */
     private void sortedInsert(Node<E> current, Comparator<E> comparator) {
-        if (sorted == null || comparator.compare(sorted.data, current.data) >= 0) {
+        if (sorted == null || comparator.compare(sorted.data,
+            current.data) >= 0) {
             current.setNext(sorted);
             sorted = current;
-        } else {
+        }
+        else {
             Node<E> temp = sorted;
-            while (temp.next != null && comparator.compare(temp.next.data, current.data) < 0) {
+            while (temp.next != null && comparator.compare(temp.next.data,
+                current.data) < 0) {
                 temp = temp.next;
             }
             current.setNext(temp.next);
@@ -285,7 +323,8 @@ public class SinglyLinkedList<E> implements Iterable<E> {
     /**
      * This nested class is to create nodes for the list
      * 
-     * @param <E> the type of the data
+     * @param <E>
+     *            the type of the data
      * 
      */
     private class Node<E> {
@@ -298,24 +337,29 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         /**
          * Constructor
          * 
-         * @param data data for the node
+         * @param data
+         *            data for the node
          */
         public Node(E data) {
             this.data = data;
             this.next = null;
         }
 
+
         /**
          * Constructor
          * 
-         * @param data data for the node
-         * @param next the next node
+         * @param data
+         *            data for the node
+         * @param next
+         *            the next node
          * 
          */
         public Node(E data, Node<E> next) {
             this.data = data;
             this.next = next;
         }
+
 
         /**
          * This method is to get the data of the node
@@ -326,6 +370,7 @@ public class SinglyLinkedList<E> implements Iterable<E> {
             return next;
         }
 
+
         /**
          * this method is to get the data of a node
          * 
@@ -335,15 +380,18 @@ public class SinglyLinkedList<E> implements Iterable<E> {
             return data;
         }
 
+
         /**
          * This method is to set the data of a node
          * 
-         * @param next the next ndoe
+         * @param next
+         *            the next ndoe
          */
         public void setNext(Node<E> next) {
             this.next = next;
         }
     }
+
 
     /**
      * This is a nested class to create an iterator for the list
@@ -366,6 +414,7 @@ public class SinglyLinkedList<E> implements Iterable<E> {
             calledNext = false;
         }
 
+
         /**
          * This method is to check if the list has a next object
          * 
@@ -375,6 +424,7 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         public boolean hasNext() {
             return next != null;
         }
+
 
         /**
          * This method is to get the next object and move the iterator
@@ -391,6 +441,7 @@ public class SinglyLinkedList<E> implements Iterable<E> {
             calledNext = true;
             return previous.getData();
         }
+
 
         /**
          * this method is to remove the current node the iterator is pointing to

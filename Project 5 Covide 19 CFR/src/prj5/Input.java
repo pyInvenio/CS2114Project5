@@ -5,19 +5,33 @@ import java.text.ParseException;
 import prj5.InputManager;
 
 /**
- * @author ngocq
- *
+ * This is the project runner class
+ * 
+ * @author ngocq, forrestm, robertpowell
+ * @version 4/22/2022
  */
 public class Input {
-
-    public static void main(String[] args)
-        throws ParseException,
-        FileNotFoundException {
-        if (args.length == 1) {
-            new InputManager(args[0]);
+    /**
+     * This is the main method
+     * 
+     * @param args
+     *            possible arguments input by console
+     * @throws ParseException
+     *             if there is an error parsing
+     * @throws FileNotFoundException
+     *             if we cannot find the file
+     */
+    public static void main(String[] args) throws FileNotFoundException {
+        try {
+            if (args.length > 0) {
+                new InputManager(args[0]);
+            }
+            else {
+                new InputManager("Cases_and_Deaths_by_race_RANDOM_NUMBERS.csv");
+            }
         }
-        else {
-            new InputManager("Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
+        catch (ParseException e) {
+
         }
 
     }

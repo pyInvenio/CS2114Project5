@@ -7,10 +7,14 @@ import prj5.CovidCase.AlphaCompare;
 import prj5.CovidCase.CFRCompare;
 
 /**
- * @author ngocq
- *
+ * This is testing CovidCase
+ * @author ngocq, forrestm, robertpowell
+ * @version 4/22/2022
  */
 public class CovidCaseTest extends student.TestCase {
+    /**
+     * fields
+     */
     private CovidCase calc1;
     private CovidCase same;
     private CovidCase infoNa;
@@ -19,6 +23,9 @@ public class CovidCaseTest extends student.TestCase {
     private AlphaCompare alpha;
     private CFRCompare cfr;
 
+    /**
+     * Set up the test
+     */
     public void setUp() {
         calc1 = new CovidCase("Asian", 5407, 254);
         same = new CovidCase("Asian", 5407, 254);
@@ -30,22 +37,30 @@ public class CovidCaseTest extends student.TestCase {
         cfr = new CFRCompare();
     }
 
-
+/**
+ * Tests getCases()
+ */
     public void testGetCases() {
         assertEquals(calc1.getCases(), 5407);
     }
 
-
+/**
+ * test getDeaths()
+ */
     public void testGetDeaths() {
         assertEquals(calc1.getDeaths(), 254);
     }
 
-
+/**
+ * test getRace()
+ */
     public void testGetRace() {
         assertEquals(calc1.getRace(), "Asian");
     }
 
-
+/**
+ * test calcCFR()
+ */
     public void testCalcCFR() {
         assertEquals(calc1.getCfr(), 4.7, 0.1);
         assertEquals(higherCfr.getCfr(), 7.4, 0.1);
@@ -55,7 +70,9 @@ public class CovidCaseTest extends student.TestCase {
         assertEquals(caseNa.getCfr(), -1, 0.1);
     }
 
-
+/**
+ * test compareTo()
+ */
     public void testCompareTo() {
         assertEquals(alpha.compare(calc1, same), 0);
         assertTrue(alpha.compare(calc1, diffRace) < 0);
@@ -63,14 +80,18 @@ public class CovidCaseTest extends student.TestCase {
         assertTrue(cfr.compare(infoNa, calc1) < 0);
     }
 
-
+/**
+ * test toString()
+ */
     public void testToString() {
         assertEquals(calc1.toString(), "asian: 5407 cases, 4.7% CFR");
         assertEquals(higherCfr.toString(), "white: 3000 cases, 7.4% CFR");
         assertEquals(infoNa.toString(), "black: 5000 cases, -1.0% CFR");
     }
 
-
+/**
+ * test equals()
+ */
     public void testEquals() {
         assertTrue(calc1.equals(same));
         assertTrue(calc1.equals(calc1));
