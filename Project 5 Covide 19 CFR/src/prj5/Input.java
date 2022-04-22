@@ -2,7 +2,6 @@ package prj5;
 
 import java.io.FileNotFoundException;
 import java.text.ParseException;
-import prj5.InputManager;
 
 /**
  * This is the project runner class
@@ -27,7 +26,7 @@ public class Input {
                 new InputManager(args[0]);
             }
             else {
-                new InputManager("Cases_and_Deaths_by_race_RANDOM_NUMBERS.csv");
+                new InputManager("Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
             }
         }
         catch (ParseException e) {

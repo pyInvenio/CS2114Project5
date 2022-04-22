@@ -77,8 +77,9 @@ public class RegionTest extends student.TestCase {
  */
     public void testSortCFR() {
         SinglyLinkedList<CovidCase> cases1 = new SinglyLinkedList<CovidCase>();
-        cases1.add(new CovidCase("Asian", 5407, 254));
         cases1.add(new CovidCase("White", 5407, 254));
+        cases1.add(new CovidCase("Asian", 5407, 254));
+        
         cases1.add(new CovidCase("Black", 5407, 274));
         region.sortCFR();
         assertEquals(cases1, region.getCovidCases());

@@ -9,6 +9,7 @@ import java.util.Comparator;
 // for your Cases, you should also then report -1.0 in your output.
 /**
  * This is the class for CovidCase
+ * 
  * @author ngocq, forrestm, robertpowell
  * @version 4/22/2022
  */
@@ -121,15 +122,23 @@ public class CovidCase {
         builder.append(getRace().toLowerCase() + ": " + getCases()
             + " cases, ");
 
-        DecimalFormat rounded = new DecimalFormat("0.0");
-        builder.append(rounded.format(getCfr()) + "% CFR");
+        double cfrRounded = Math.round(getCfr() * 10.0) / 10.0;
+        if (cfrRounded % 1 == 0) {
+            
+            builder.append((int)getCfr() + "% CFR");
+        }
+        else {
+            DecimalFormat rounded = new DecimalFormat("0.0");
+            builder.append(rounded.format(getCfr()) + "% CFR");
+        }
 
         return builder.toString();
     }
 
 
     /**
-     * @param obj the object to compare to
+     * @param obj
+     *            the object to compare to
      * @return the equality between two CovidCase objects
      */
     public boolean equals(Object obj) {
@@ -144,9 +153,10 @@ public class CovidCase {
 
         return this.toString().equals(other.toString());
     }
-/**
- * this is the cfr comparator class
- */
+
+    /**
+     * this is the cfr comparator class
+     */
     public static class CFRCompare implements Comparator<CovidCase> {
 
         /**
@@ -165,17 +175,18 @@ public class CovidCase {
         @Override
         public int compare(CovidCase thisCase, CovidCase other) {
             if (thisCase.cfr == other.cfr) {
-                return thisCase.getRace().compareTo(other.getRace());
+                return other.getRace().compareTo(thisCase.getRace());
             }
-            return Double.compare(other.cfr, thisCase.cfr);
+            return Double.compare(thisCase.cfr, other.cfr);
 
         }
 
     }
 
-/**
- * This is the alphacomparator class for the CovidCase class
- */
+
+    /**
+     * This is the alphacomparator class for the CovidCase class
+     */
     public static class AlphaCompare implements Comparator<CovidCase> {
 
         /**

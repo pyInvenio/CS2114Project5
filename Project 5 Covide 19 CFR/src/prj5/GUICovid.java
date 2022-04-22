@@ -6,7 +6,7 @@ import java.io.*;
  * @author ngocq, forrestm, robertpowell
  * @version 4/22/2022
  */
-public class CovidGUI {
+public class GUICovid {
     /**
      * Fields
      */
@@ -16,7 +16,7 @@ public class CovidGUI {
      * Constructor
      * @param regionList the list of regions
      */
-    public CovidGUI(SinglyLinkedList<Region> regionList) {
+    public GUICovid(SinglyLinkedList<Region> regionList) {
         casesList = regionList;
     }
 
@@ -36,7 +36,7 @@ public class CovidGUI {
             }
             System.out.println("=====");
             region.sortCFR();
-            for (int j = 0; j <region.getCovidCases().size(); j++) {
+            for (int j = region.getCovidCases().size() - 1; j >= 0; j--) {
                 System.out.println(region.getCovidCases().get(j).toString());
             }
             System.out.println("=====");

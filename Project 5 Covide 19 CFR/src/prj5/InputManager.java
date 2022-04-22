@@ -19,9 +19,9 @@ public class InputManager {
         throws FileNotFoundException,
         ParseException {
 
-        CovidGUI covidGui = new CovidGUI(readFile(fileName));
+        GUICovid covidGui = new GUICovid(readFile(fileName));
         covidGui.getTextFile();
-        
+
 
     }
 

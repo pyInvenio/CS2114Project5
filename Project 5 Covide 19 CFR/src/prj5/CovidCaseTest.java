@@ -86,7 +86,7 @@ public class CovidCaseTest extends student.TestCase {
     public void testToString() {
         assertEquals(calc1.toString(), "asian: 5407 cases, 4.7% CFR");
         assertEquals(higherCfr.toString(), "white: 3000 cases, 7.4% CFR");
-        assertEquals(infoNa.toString(), "black: 5000 cases, -1.0% CFR");
+        assertEquals(infoNa.toString(), "black: 5000 cases, -1% CFR");
     }
 
 /**
