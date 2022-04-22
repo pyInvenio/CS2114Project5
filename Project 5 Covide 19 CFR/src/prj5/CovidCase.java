@@ -1,6 +1,7 @@
 package prj5;
 
 import java.text.DecimalFormat;
+import java.util.Comparator;
 
 // Question on: For this test, if deaths or cases or both are NA, we ask that
 // your CFR
@@ -108,29 +109,6 @@ public class CovidCase {
 
     /**
      * 
-     * The compareTo method to help woth sorting CovidCase objects based on
-     * their CFR
-     * 
-     * @param other
-     *            is the other CovidCase object the current CovidCase is being
-     *            compared to
-     * @return either a positive, negative, or zero integer based on if the
-     *         current CovidCase object has a larger CFR, lower CFR, or equal
-     */
-    public int compareTo(CovidCase other) {
-        if (this.cfr > other.cfr) {
-            return 1;
-        }
-        else if (this.cfr < other.cfr) {
-            return -1;
-        }
-        return this.getRace().compareTo(other.getRace());
-
-    }
-
-
-    /**
-     * 
      * @return the race, covid case, death cases, and cfr properly formated as a
      *         string
      */
@@ -161,6 +139,53 @@ public class CovidCase {
         CovidCase other = (CovidCase)obj;
 
         return this.toString().equals(other.toString());
+    }
+
+    public static class CFRCompare implements Comparator<CovidCase>{
+        
+        /**
+         * 
+         * The compareTo method to help woth sorting CovidCase objects based on
+         * their CFR
+         * 
+         * @param other
+         *            is the other CovidCase object the current CovidCase is being
+         *            compared to
+         * @return either a positive, negative, or zero integer based on if the
+         *         current CovidCase object has a larger CFR, lower CFR, or equal
+         */
+        @Override
+        public int compare(CovidCase thisCase, CovidCase other) {
+            if (thisCase.cfr == other.cfr) {
+                return thisCase.getRace().compareTo(other.getRace());
+            }
+            return Double.compare(thisCase.cfr, other.cfr);
+
+        }
+
+
+    }
+
+    public static class AlphaCompare implements Comparator<CovidCase>{
+        
+        /**
+         * 
+         * The compareTo method to help woth sorting CovidCase objects based on
+         * their region name
+         * 
+         * @param other
+         *            is the other CovidCase object the current CovidCase is being
+         *            compared to
+         * @return either a positive, negative, or zero integer based on if the
+         *         current CovidCase object is more or less alphabetical
+         */
+        @Override
+        public int compare(CovidCase thisCase, CovidCase other) {
+            return thisCase.getRace().compareTo(other.getRace());
+            
+        }
+
+
     }
 
 }

@@ -18,7 +18,7 @@ public class SinglyLinkedList<E> implements Iterable<E> {
      */
     private Node<E> head;
     private int size;
-
+    private Node<E> sorted;
     /**
      * Creates a new LinkedList object
      */
@@ -223,14 +223,41 @@ public class SinglyLinkedList<E> implements Iterable<E> {
      * @param comparator the comparator to use for the sort
      */
     public void insertionSort(Comparator<E> comparator) {
-        Node<E> sorted = null;
+        sorted = null;
         Node<E> current = head;
         while (current != null) {
             Node<E> next = current.next;
-            sorted = sortedInsert(sorted, current, comparator);
+            sortedInsert(current, comparator);
             current = next;
         }
         head = sorted;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == null){
+            return false;
+        }
+        if(o == this){
+            return true;
+        }
+        if(!(o instanceof SinglyLinkedList)){
+            return false;
+        }
+        SinglyLinkedList<E> other = (SinglyLinkedList<E>) o;
+        if(other.size != size){
+            return false;
+        }
+        Node<E> current = head;
+        Node<E> otherCurrent = other.head;
+        while(current != null){
+            if(!current.getData().equals(otherCurrent.getData())){
+                return false;
+            }
+            current = current.getNext();
+            otherCurrent = otherCurrent.getNext();
+        }
+        return true;
     }
 
     /**
@@ -241,20 +268,18 @@ public class SinglyLinkedList<E> implements Iterable<E> {
      * @param comparator the comparator to compare the nodes
      * @return the sorted head
      */
-    private Node<E> sortedInsert(Node<E> sortedHead, Node<E> current, Comparator<E> comparator) {
-        if (sortedHead == null || comparator.compare(head.data, current.data) >= 0) {
-            current.setNext(sortedHead);
-            return current;
+    private void sortedInsert(Node<E> current, Comparator<E> comparator) {
+        if (sorted == null || comparator.compare(sorted.data, current.data) >= 0) {
+            current.setNext(sorted);
+            sorted = current;
         } else {
-            Node<E> temp = sortedHead;
+            Node<E> temp = sorted;
             while (temp.next != null && comparator.compare(temp.next.data, current.data) < 0) {
                 temp = temp.next;
             }
             current.setNext(temp.next);
             temp.setNext(current);
         }
-        
-        return sortedHead;
     }
 
     /**

@@ -154,6 +154,23 @@ public class SinglyLinkedListTest extends student.TestCase{
             assertEquals("Str" + i, array[i]);
         }
     }
+
+    public void testEquals(){
+        SinglyLinkedList<String> list2 = new SinglyLinkedList<String>();
+        for (int i = 0; i < 10; i++) {
+            list2.add("Str" + i);
+        }
+        assertTrue(list.equals(list2));
+        SinglyLinkedList<String> list3 = new SinglyLinkedList<String>();
+        for (int i = 0; i < 10; i++) {
+            list3.add("Str" + i);
+        }
+        list3.add("Str10");
+        assertFalse(list.equals(list3));
+        assertFalse(list.equals(null));
+        assertTrue(list.equals(list));
+        assertFalse(list.equals("Str"));
+    }
     public void testIterator(){
         Iterator<String> iter = list.iterator();
         for (int i = 0; i < 10; i++) {

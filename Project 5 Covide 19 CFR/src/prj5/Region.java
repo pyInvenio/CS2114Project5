@@ -10,7 +10,7 @@ package prj5;
 public class Region {
     
     private String name; 
-    private SingleLinkedList<CovidCase> covidCases;
+    private SinglyLinkedList<CovidCase> covidCases;
     
     /**
      * Creates a Region object
@@ -20,47 +20,41 @@ public class Region {
      * @oaram cases
      *      the linked list of covid cases
      */
-    public Region(String regionName, SingleLinkedList<CovidCase> cases) {
+    public Region(String regionName, SinglyLinkedList<CovidCase> cases) {
         name = regionName;
-        
+        covidCases = cases;
     }
     
     /**
      * Returns the name of the region 
      */
-    public void getName() {
-        
+    public String getName() {
+        return name;
     }
     
     /**
      * Returns the covidCase data
      */
-    public SingleLinkedList<CovidCases> getCovidCases() {
-        
+    public SinglyLinkedList<CovidCase> getCovidCases() {
+        return covidCases;
     }
-    
-    /**
-     * Compares the data of two regions
-     */
-    @Override
-    public int compareTo() {
-        
-    }
-    
-    /**
-     * Converts the data of the region to a string
-     */
-    public String toString() {
-        
-        
-    }
-    
+
     /**
      * Checks if two regions have the same data
      */
     @Override
-    public void equals() {
-        
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        Region other = (Region) obj;
+        return name.equals(other.getName()) && covidCases.equals(other.getCovidCases());
     }
     
     /**
@@ -68,13 +62,14 @@ public class Region {
      */
     public void sortAlpha() {
         
+        this.covidCases.insertionSort(new CovidCase.AlphaCompare());
     }
     
     /**
      * Sorts the regions by CFR
      */
     public void sortCFR() {
-        
+        this.covidCases.insertionSort(new CovidCase.CFRCompare());
     }
 
 }

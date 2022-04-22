@@ -14,15 +14,15 @@ public class CovidGUI {
             
             for (int i = 0; i < casesList.size(); i++) {
                 Region region = casesList.get(i);
-                pw.println(region.getState());
+                pw.println(region.getName());
                 region.sortAlpha();
-                for (CovidCase c : region.getList()){
+                for (CovidCase c : region.getCovidCases()){
                     pw.println(c.toString());
                 }
                 pw.println("=====");
                 region.sortCFR();
-                for (CovidCase c : region.getList()){
-                    pw.println(c.toString());
+                for (int j = region.getCovidCases().size() - 1; j >= 0; j--) {
+                    pw.println(region.getCovidCases().get(j).toString());
                 }
                 pw.println("=====");
             }

@@ -6,35 +6,33 @@ import prj5.CovidCase;
 
 
 public class InputManager {
-    
-    //private SinglyLinkedList<Region> regionList;
-    
+        
     public InputManager(String fileName) throws FileNotFoundException {
         
         CovidGUI covidGui = new CovidGUI(readFile(fileName));
         covidGui.getTextFile();
 
     }
-    private void readFile(String fileName) throws FileNotFoundException {
-        //<Region> list = new SinglyLinkedList<Region>();
+    private SinglyLinkedList<Region> readFile(String fileName) throws FileNotFoundException {
+        SinglyLinkedList<Region> list = new SinglyLinkedList<Region>();
         Scanner s = new Scanner(new File(fileName));
         s.useDelimiter(",");
         s.nextLine();
         while(s.hasNext()){
             String[] sarray = s.nextLine().split(",");
             String state = sarray[0].trim();
-            //Region region = new Region(state);
+            SinglyLinkedList<CovidCase> covidCases = new SinglyLinkedList<CovidCase>();
             for (int i = 0 ; i < 5; i++) {
                 int cases = sarray[i+1].trim().equals("NA") ? -1 : Integer.parseInt(sarray[i+1].trim());
                 int deaths = sarray[i+6].trim().equals("NA") ? -1 : Integer.parseInt(sarray[i+6].trim());
                 CovidCase c = new CovidCase(RaceEnum.get(i), cases, deaths);
-                //region.add(c);
+                covidCases.add(c);
             }
-            
-            //list.add(region);
+            Region region = new Region(state, covidCases);
+            list.add(region);
 
         }
-        return;
+        return list;
     }
 
 }

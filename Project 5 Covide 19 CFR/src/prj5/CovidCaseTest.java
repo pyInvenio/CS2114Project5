@@ -3,6 +3,9 @@
  */
 package prj5;
 
+import prj5.CovidCase.AlphaCompare;
+import prj5.CovidCase.CFRCompare;
+
 /**
  * @author ngocq
  *
@@ -10,10 +13,11 @@ package prj5;
 public class CovidCaseTest extends student.TestCase {
     private CovidCase calc1;
     private CovidCase same;
-
     private CovidCase infoNa;
     private CovidCase higherCfr;
     private CovidCase diffRace;
+    private AlphaCompare alpha;
+    private CFRCompare cfr;
 
     public void setUp() {
         calc1 = new CovidCase("Asian", 5407, 254);
@@ -22,6 +26,8 @@ public class CovidCaseTest extends student.TestCase {
 
         higherCfr = new CovidCase("White", 3000, 223);
         infoNa = new CovidCase("Black", 5000, -1);
+        alpha = new AlphaCompare();
+        cfr = new CFRCompare();
     }
 
 
@@ -51,11 +57,10 @@ public class CovidCaseTest extends student.TestCase {
 
 
     public void testCompareTo() {
-        assertEquals(calc1.compareTo(infoNa), 1);
-        assertEquals(calc1.compareTo(higherCfr), -1);
-        assertEquals(calc1.compareTo(same), 0);
-        assertEquals(calc1.compareTo(diffRace), -22);
-        assertEquals(diffRace.compareTo(calc1), 22);
+        assertEquals(alpha.compare(calc1, same), 0);
+        assertTrue(alpha.compare(calc1, diffRace) < 0);
+        assertEquals(cfr.compare(calc1, same), 0);
+        assertTrue(cfr.compare(infoNa, calc1) < 0);
     }
 
 
