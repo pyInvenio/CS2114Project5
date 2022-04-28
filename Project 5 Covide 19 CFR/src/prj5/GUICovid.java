@@ -1,9 +1,21 @@
 package prj5;
 
 import java.io.*;
+
 /**
- * This is the class for CovidGUI
- * @author ngocq, forrestm, robertpowell
+ *
+ * Virginia Tech Honor Code Pledge:
+ * As a Hokie, I will conduct myself
+ * with honor and integrity at all times.
+ * I will not lie, cheat, or steal, nor
+ * will I accept the actions of those who do.
+ *  Forrest Meng (forrestm), Ngoc Quy (ngocquy), Robert Powell (robertp18)
+ * 
+ * This is the class for GUICovid
+ * 
+ * 
+ * @author Forrest Meng (forrestm), Ngoc Quy (ngocquy), Robert Powell
+ *         (robertp18)
  * @version 4/22/2022
  */
 public class GUICovid {
@@ -14,18 +26,21 @@ public class GUICovid {
 
     /**
      * Constructor
-     * @param regionList the list of regions
+     * 
+     * @param regionList
+     *            the list of regions
      */
     public GUICovid(SinglyLinkedList<Region> regionList) {
         casesList = regionList;
     }
 
-/**
- * This is the method to get the output from the list of regions
- */
+
+    /**
+     * This is the method to get the output from the list of regions
+     */
     public void getTextFile() {
-        //try {
-            //PrintWriter pw = new PrintWriter("CovidCases.txt");
+        // try {
+        // PrintWriter pw = new PrintWriter("CovidCases.txt");
 
         for (int i = 0; i < casesList.size(); i++) {
             Region region = casesList.get(i);
@@ -41,10 +56,10 @@ public class GUICovid {
             }
             System.out.println("=====");
         }
-            //pw.close();
-        //}
+        // pw.close();
+        // }
         // catch (FileNotFoundException e) {
-        //     e.printStackTrace();
+        // e.printStackTrace();
         // }
 
     }

@@ -7,8 +7,19 @@ import prj5.CovidCase.AlphaCompare;
 import prj5.CovidCase.CFRCompare;
 
 /**
- * This is testing CovidCase
- * @author ngocq, forrestm, robertpowell
+ *
+ * Virginia Tech Honor Code Pledge:
+ * As a Hokie, I will conduct myself
+ * with honor and integrity at all times.
+ * I will not lie, cheat, or steal, nor
+ * will I accept the actions of those who do.
+ * -- Forrest Meng (forrestm), Ngoc Quy (ngocquy), Robert Powell (robertp18)
+ * 
+ * This is the class for testing CovidCase
+ * 
+ * 
+ * @author Forrest Meng (forrestm), Ngoc Quy (ngocquy), Robert Powell
+ *         (robertp18)
  * @version 4/22/2022
  */
 public class CovidCaseTest extends student.TestCase {
@@ -37,30 +48,34 @@ public class CovidCaseTest extends student.TestCase {
         cfr = new CFRCompare();
     }
 
-/**
- * Tests getCases()
- */
+
+    /**
+     * Tests getCases()
+     */
     public void testGetCases() {
         assertEquals(calc1.getCases(), 5407);
     }
 
-/**
- * test getDeaths()
- */
+
+    /**
+     * test getDeaths()
+     */
     public void testGetDeaths() {
         assertEquals(calc1.getDeaths(), 254);
     }
 
-/**
- * test getRace()
- */
+
+    /**
+     * test getRace()
+     */
     public void testGetRace() {
         assertEquals(calc1.getRace(), "Asian");
     }
 
-/**
- * test calcCFR()
- */
+
+    /**
+     * test calcCFR()
+     */
     public void testCalcCFR() {
         assertEquals(calc1.getCfr(), 4.7, 0.1);
         assertEquals(higherCfr.getCfr(), 7.4, 0.1);
@@ -70,9 +85,10 @@ public class CovidCaseTest extends student.TestCase {
         assertEquals(caseNa.getCfr(), -1, 0.1);
     }
 
-/**
- * test compareTo()
- */
+
+    /**
+     * test compareTo()
+     */
     public void testCompareTo() {
         assertEquals(alpha.compare(calc1, same), 0);
         assertTrue(alpha.compare(calc1, diffRace) < 0);
@@ -80,18 +96,20 @@ public class CovidCaseTest extends student.TestCase {
         assertTrue(cfr.compare(infoNa, calc1) < 0);
     }
 
-/**
- * test toString()
- */
+
+    /**
+     * test toString()
+     */
     public void testToString() {
         assertEquals(calc1.toString(), "asian: 5407 cases, 4.7% CFR");
         assertEquals(higherCfr.toString(), "white: 3000 cases, 7.4% CFR");
         assertEquals(infoNa.toString(), "black: 5000 cases, -1% CFR");
     }
 
-/**
- * test equals()
- */
+
+    /**
+     * test equals()
+     */
     public void testEquals() {
         assertTrue(calc1.equals(same));
         assertTrue(calc1.equals(calc1));
@@ -100,6 +118,34 @@ public class CovidCaseTest extends student.TestCase {
         assertFalse(calc1.equals(null));
         assertFalse(calc1.equals(diffRace));
         assertFalse(calc1.equals(higherCfr));
+    }
+
+
+    /**
+     * Tests the readfile()
+     * 
+     * @throws FileNotFoundException
+     * @throws ParseParseException
+     */
+    public void testReadFile() {
+        Exception e = null;
+        try {
+            InputManager input = new InputManager("test.txt");
+        }
+        catch (Exception e1) {
+            e = e1;
+        }
+        assertNotNull(e);
+        e = null;
+        try {
+            InputManager input = new InputManager(
+                "Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
+
+        }
+        catch (Exception e2) {
+            e = e2;
+        }
+        assertNull(e);
     }
 
 }

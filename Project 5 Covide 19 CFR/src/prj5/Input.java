@@ -4,9 +4,19 @@ import java.io.FileNotFoundException;
 import java.text.ParseException;
 
 /**
- * This is the project runner class
+ *
+ * Virginia Tech Honor Code Pledge:
+ * As a Hokie, I will conduct myself
+ * with honor and integrity at all times.
+ * I will not lie, cheat, or steal, nor
+ * will I accept the actions of those who do.
+ *  Forrest Meng (forrestm), Ngoc Quy (ngocquy), Robert Powell (robertp18)
  * 
- * @author ngocq, forrestm, robertpowell
+ * This is the main input class
+ * 
+ * 
+ * @author Forrest Meng (forrestm), Ngoc Quy (ngocquy), Robert Powell
+ *         (robertp18)
  * @version 4/22/2022
  */
 public class Input {
