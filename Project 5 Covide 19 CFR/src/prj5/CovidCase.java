@@ -3,14 +3,20 @@ package prj5;
 import java.text.DecimalFormat;
 import java.util.Comparator;
 
-// Question on: For this test, if deaths or cases or both are NA, we ask that
-// your CFR
-// calculator method return -1.0 to indicate that CFR is NA. If -1.0 is returned
-// for your Cases, you should also then report -1.0 in your output.
 /**
+ *
+ * Virginia Tech Honor Code Pledge:
+ * As a Hokie, I will conduct myself
+ * with honor and integrity at all times.
+ * I will not lie, cheat, or steal, nor
+ * will I accept the actions of those who do.
+ * -- Forrest Meng (forrestm), Ngoc Quy (ngocquy), Robert Powell (robertp18)
+ * 
  * This is the class for CovidCase
  * 
- * @author ngocq, forrestm, robertpowell
+ * 
+ * @author Forrest Meng (forrestm), Ngoc Quy (ngocquy), Robert Powell
+ *         (robertp18)
  * @version 4/22/2022
  */
 public class CovidCase {
@@ -120,11 +126,11 @@ public class CovidCase {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append(getRace().toLowerCase() + ": " + getCases()
-            + " cases, ");
+            + " cases, ");  
 
         double cfrRounded = Math.round(getCfr() * 10.0) / 10.0;
         if (cfrRounded % 1 == 0) {
-            
+
             builder.append((int)getCfr() + "% CFR");
         }
         else {

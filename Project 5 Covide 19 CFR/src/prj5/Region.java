@@ -4,8 +4,19 @@
 package prj5;
 
 /**
+ *
+ * Virginia Tech Honor Code Pledge:
+ * As a Hokie, I will conduct myself
+ * with honor and integrity at all times.
+ * I will not lie, cheat, or steal, nor
+ * will I accept the actions of those who do.
+ *  Forrest Meng (forrestm), Ngoc Quy (ngocquy), Robert Powell (robertp18)
+ * 
  * This is the class for Region
- * @author ngocq, forrestm, robertpowell
+ * 
+ * 
+ * @author Forrest Meng (forrestm), Ngoc Quy (ngocquy), Robert Powell
+ *         (robertp18)
  * @version 4/22/2022
  */
 public class Region {
@@ -16,8 +27,10 @@ public class Region {
     /**
      * Creates a Region object
      * 
-     * @param regionName   the name of the region
-     * @param cases   the linked list of covid cases
+     * @param regionName
+     *            the name of the region
+     * @param cases
+     *            the linked list of covid cases
      */
     public Region(String regionName, SinglyLinkedList<CovidCase> cases) {
         name = regionName;
@@ -27,6 +40,7 @@ public class Region {
 
     /**
      * Returns the name of the region
+     * 
      * @return name
      */
     public String getName() {
@@ -36,6 +50,7 @@ public class Region {
 
     /**
      * Returns the covidCase data
+     * 
      * @return covidCases
      */
     public SinglyLinkedList<CovidCase> getCovidCases() {
@@ -45,7 +60,9 @@ public class Region {
 
     /**
      * Checks if two regions have the same data
-     * @param obj the object to compare
+     * 
+     * @param obj
+     *            the object to compare
      * @return true if they are the same
      */
     @Override

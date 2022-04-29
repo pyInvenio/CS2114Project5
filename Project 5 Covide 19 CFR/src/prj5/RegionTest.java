@@ -1,7 +1,19 @@
 package prj5;
+
 /**
- * This is the test class for Region
- * @author ngocq, forrestm, robertpowell
+ *
+ * Virginia Tech Honor Code Pledge:
+ * As a Hokie, I will conduct myself
+ * with honor and integrity at all times.
+ * I will not lie, cheat, or steal, nor
+ * will I accept the actions of those who do.
+ *  Forrest Meng (forrestm), Ngoc Quy (ngocquy), Robert Powell (robertp18)
+ * 
+ * This is the class for testing Region
+ * 
+ * 
+ * @author Forrest Meng (forrestm), Ngoc Quy (ngocquy), Robert Powell
+ *         (robertp18)
  * @version 4/22/2022
  */
 public class RegionTest extends student.TestCase {
@@ -22,16 +34,18 @@ public class RegionTest extends student.TestCase {
         region = new Region("A", cases);
     }
 
-/**
- * Tests getName()
- */
+
+    /**
+     * Tests getName()
+     */
     public void testGetName() {
         assertEquals(region.getName(), "A");
     }
 
-/**
- * Tests getCovidCases()
- */
+
+    /**
+     * Tests getCovidCases()
+     */
     public void testGetCovidCases() {
         SinglyLinkedList<CovidCase> cases1 = new SinglyLinkedList<CovidCase>();
         cases1.add(new CovidCase("Asian", 5407, 254));
@@ -40,9 +54,10 @@ public class RegionTest extends student.TestCase {
         assertEquals(cases1, region.getCovidCases());
     }
 
-/**
- * tests equals()
- */
+
+    /**
+     * tests equals()
+     */
     public void testEquals() {
         SinglyLinkedList<CovidCase> cases1 = new SinglyLinkedList<CovidCase>();
         cases1.add(new CovidCase("Asian", 5407, 254));
@@ -59,9 +74,10 @@ public class RegionTest extends student.TestCase {
         assertTrue(region.equals(region));
     }
 
-/**
- * tests sortAlpha()
- */
+
+    /**
+     * tests sortAlpha()
+     */
     public void testSortAlpha() {
         SinglyLinkedList<CovidCase> cases1 = new SinglyLinkedList<CovidCase>();
         cases1.add(new CovidCase("Asian", 5407, 254));
@@ -72,14 +88,15 @@ public class RegionTest extends student.TestCase {
         assertEquals(cases1, region.getCovidCases());
     }
 
-/**
- * tests sortCFR()
- */
+
+    /**
+     * tests sortCFR()
+     */
     public void testSortCFR() {
         SinglyLinkedList<CovidCase> cases1 = new SinglyLinkedList<CovidCase>();
         cases1.add(new CovidCase("White", 5407, 254));
         cases1.add(new CovidCase("Asian", 5407, 254));
-        
+
         cases1.add(new CovidCase("Black", 5407, 274));
         region.sortCFR();
         assertEquals(cases1, region.getCovidCases());
