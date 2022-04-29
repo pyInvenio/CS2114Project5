@@ -36,7 +36,7 @@ public class InputManager {
         ParseException {
 
         GUICovid covidGui = new GUICovid(readFile(fileName));
-        //covidGui.getTextFile();
+        covidGui.getTextFile();
 
     }
 

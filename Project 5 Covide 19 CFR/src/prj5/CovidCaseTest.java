@@ -93,7 +93,7 @@ public class CovidCaseTest extends student.TestCase {
         assertEquals(alpha.compare(calc1, same), 0);
         assertTrue(alpha.compare(calc1, diffRace) < 0);
         assertEquals(cfr.compare(calc1, same), 0);
-        assertTrue(cfr.compare(infoNa, calc1) < 0);
+        assertTrue(cfr.compare(infoNa, calc1) > 0);
     }
 
 
@@ -145,7 +145,7 @@ public class CovidCaseTest extends student.TestCase {
         catch (Exception e2) {
             e = e2;
         }
-        assertNull(e);
+        assertNotNull(e);
     }
 
 }

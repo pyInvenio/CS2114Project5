@@ -1,7 +1,7 @@
 package prj5;
 
 import cs2.Shape;
-import java.awt.Color;;
+import java.awt.Color;
 
 /**
  *
@@ -82,8 +82,8 @@ public class CovidGlyph {
      * The calcHeight() takes in the cfr of the give CovidCase obj and
      * calculates the height with the give cfr parameter.
      * 
-     * @param objCfr
-     * @return
+     * @param objCfr the cfr to calculate for
+     * @return the calculated height given CFR
      */
     public static int calcHeight(double objCfr) {
         return (int)(objCfr / MAX_CFR * MAX_HEIGHT);

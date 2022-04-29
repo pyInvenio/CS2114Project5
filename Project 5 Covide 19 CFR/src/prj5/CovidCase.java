@@ -183,7 +183,7 @@ public class CovidCase {
             if (thisCase.cfr == other.cfr) {
                 return other.getRace().compareTo(thisCase.getRace());
             }
-            return Double.compare(thisCase.cfr, other.cfr);
+            return Double.compare(other.cfr, thisCase.cfr);
 
         }
 
