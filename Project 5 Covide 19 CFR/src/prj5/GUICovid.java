@@ -16,7 +16,8 @@ import cs2.Shape;
  * will I accept the actions of those who do.
  * Forrest Meng (forrestm), Ngoc Quy (ngocquy), Robert Powell (robertp18)
  * 
- * This is the class for GUICovid
+ * This is the class for GUICovid that displays the window, buttons, text, and
+ * bars associated with each race for different settings.
  * 
  * 
  * @author Forrest Meng (forrestm), Ngoc Quy (ngocquy), Robert Powell
@@ -36,6 +37,9 @@ public class GUICovid {
     private CovidGlyph[] covidGlyphs;
 
     /**
+     * Creates one instance of the window that has all the buttons for the
+     * regions, sorting alpha, sorting cfr, and title.
+     * 
      * @param regionList
      *            the list of regions
      */
@@ -70,7 +74,6 @@ public class GUICovid {
                 .get(i));
             textNames[i] = new TextShape(0, 0, "");
             textCFR[i] = new TextShape(0, 0, "");
-            // window.addShape(covidGlyphs[i].getCovidShape());
             window.addShape(textNames[i]);
             window.addShape(textCFR[i]);
         }
@@ -80,6 +83,15 @@ public class GUICovid {
     }
 
 
+    /**
+     * The updateDisplay() changes the title of the window based on the region
+     * name that was clicked. This method is the bulk of how the bars are
+     * formatted on the window after its height and width is calculated using
+     * the CovidGlyph class. The text of the cfr percentage and race are also
+     * updated on the window right below each bar to ensure labeling is
+     * accurate. Lastly, this method accounts for invalid data input for a race
+     * by subsituting the bar with a text object, "NA".
+     */
     public void updateDisplay() {
         title.setText(currentRegion.getName()
             + " Case Fatality Ratios by Race");
@@ -93,16 +105,16 @@ public class GUICovid {
             window.removeShape(covidGlyphs[i].getCovidShape());
             int height = CovidGlyph.calcHeight(currentRegion.getCovidCases()
                 .get(i).getCfr());
-            int barX = space * (i + 1) - covidGlyphs[i].width()/2;
+            int barX = space * (i + 1) - covidGlyphs[i].width() / 2;
             int barY = baseY - height;
             int width = covidGlyphs[i].width();
             covidGlyphs[i] = new CovidGlyph(barX, barY, currentRegion
                 .getCovidCases().get(i));
-            textNames[i].setText(currentRegion.getCovidCases().get(i)
-                .getRace().toLowerCase());
+            textNames[i].setText(currentRegion.getCovidCases().get(i).getRace()
+                .toLowerCase());
             textCFR[i].setText(convertCFR(currentRegion.getCovidCases().get(i)
                 .getCfr()));
-           
+
             textNames[i].setX(barX + (width - textNames[i].getWidth()) / 2);
             textNames[i].setY(baseY + textNames[i].getHeight());
             textCFR[i].setX(barX + (width - textCFR[i].getWidth()) / 2);
@@ -118,6 +130,14 @@ public class GUICovid {
     }
 
 
+    /**
+     * Once the parameter button is clicked, the onClickState() goes through the
+     * StateEnum to find the parameter state and displays its information on the
+     * GUI window.
+     * 
+     * @param b
+     *            the region button being clicked
+     */
     public void onClickState(Button b) {
         String[] sa = b.getTitle().split(" ");
         for (StateEnum e : StateEnum.values()) {
@@ -129,6 +149,15 @@ public class GUICovid {
     }
 
 
+    /**
+     * The onClickSort() should determine which sort button is being clicked
+     * given through the parameters and then update the information on screen
+     * either alphabetically or by cfr after determining which sort button was
+     * clicked.
+     * 
+     * @param b
+     *            either the sortCFR or sortAlpha button that is being clicked
+     */
     public void onClickSort(Button b) {
         String[] s = b.getTitle().split(" ");
         if (s[0].equals("Sort")) {
@@ -149,6 +178,12 @@ public class GUICovid {
     }
 
 
+    /**
+     * Exits from the GUI once the user click the quit button
+     * 
+     * @param b
+     *            the quit button
+     */
     public void onClickQuit(Button b) {
         System.exit(0);
     }
@@ -158,8 +193,6 @@ public class GUICovid {
      * This is the method to get the output from the list of regions
      */
     public void getTextFile() {
-        // try {
-        // PrintWriter pw = new PrintWriter("CovidCases.txt");
 
         for (int i = 0; i < casesList.size(); i++) {
             Region region = casesList.get(i);
@@ -175,15 +208,21 @@ public class GUICovid {
             }
             System.out.println("=====");
         }
-        // pw.close();
-        // }
-        // catch (FileNotFoundException e) {
-        // e.printStackTrace();
-        // }
 
     }
 
 
+    /**
+     * A helper method for displaying the formated text below each bar
+     * representing what each race's cfr is and what data the height of the bars
+     * are based on.
+     * 
+     * @param cfr
+     *            the cfr of a given CovidCase obj
+     * @return the string formate of "NA" if the cfr is -1.0 and the string
+     *         version of the double rounded to the tenths place with "%" at the
+     *         end.
+     */
     private String convertCFR(double cfr) {
         StringBuilder builder = new StringBuilder();
         if (cfr == -1) {

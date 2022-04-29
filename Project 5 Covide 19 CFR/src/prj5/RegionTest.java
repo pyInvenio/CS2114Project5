@@ -12,7 +12,7 @@ package prj5;
  * This is the class for testing Region
  * 
  * 
- * @author Forrest Meng (forrestm), Ngoc Quy (ngocquy), Robert Powell
+ * @author Forrest Meng (forrestm), Ngoc Quy Tran (ngocquy), Robert Powell
  *         (robertp18)
  * @version 4/22/2022
  */

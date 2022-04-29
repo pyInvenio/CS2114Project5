@@ -267,11 +267,14 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         head = sorted;
     }
 
-/**
- * This method is to test check if an object is equal to this
- * @param o the object to test
- * @return true if they are equal or have same characteristics
- */
+
+    /**
+     * This method is to test check if an object is equal to this
+     * 
+     * @param o
+     *            the object to test
+     * @return true if they are equal or have same characteristics
+     */
     @Override
     public boolean equals(Object o) {
         if (o == null) {

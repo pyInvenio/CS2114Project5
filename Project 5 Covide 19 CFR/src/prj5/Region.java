@@ -10,7 +10,7 @@ package prj5;
  * with honor and integrity at all times.
  * I will not lie, cheat, or steal, nor
  * will I accept the actions of those who do.
- *  Forrest Meng (forrestm), Ngoc Quy (ngocquy), Robert Powell (robertp18)
+ * Forrest Meng (forrestm), Ngoc Quy (ngocquy), Robert Powell (robertp18)
  * 
  * This is the class for Region
  * 
