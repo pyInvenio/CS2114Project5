@@ -313,14 +313,14 @@ public class SinglyLinkedList<E> implements Iterable<E> {
      */
     private void sortedInsert(Node<E> current, Comparator<E> comparator) {
         if (sorted == null || comparator.compare(sorted.data,
-            current.data) >= 0) {
+            current.data) <= 0) {
             current.setNext(sorted);
             sorted = current;
         }
         else {
             Node<E> temp = sorted;
             while (temp.next != null && comparator.compare(temp.next.data,
-                current.data) < 0) {
+                current.data) > 0) {
                 temp = temp.next;
             }
             current.setNext(temp.next);

@@ -126,7 +126,7 @@ public class CovidCase {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append(getRace().toLowerCase() + ": " + getCases()
-            + " cases, ");
+            + " cases, ");  
 
         double cfrRounded = Math.round(getCfr() * 10.0) / 10.0;
         if (cfrRounded % 1 == 0) {
